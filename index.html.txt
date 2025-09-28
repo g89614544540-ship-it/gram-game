@@ -1,0 +1,58 @@
+document.getElementById('gameScreen').style.display = 'none';
+            document.getElementById('walletScreen').style.display = 'none';
+            document.getElementById('donateScreen').style.display = 'none';
+            document.getElementById('backBtn').style.display = 'none';
+            document.getElementById('screenTitle').textContent = 'Gram Game';
+        }
+        
+        function showGameScreen() {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('gameScreen').style.display = 'block';
+            document.getElementById('backBtn').style.display = 'block';
+            document.getElementById('screenTitle').textContent = 'Game';
+        }
+        
+        function showWalletScreen() {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('walletScreen').style.display = 'block';
+            document.getElementById('backBtn').style.display = 'block';
+            document.getElementById('screenTitle').textContent = 'Wallet';
+            updateBalance();
+        }
+        
+        function showDonateScreen() {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('donateScreen').style.display = 'block';
+            document.getElementById('backBtn').style.display = 'block';
+            document.getElementById('screenTitle').textContent = 'Donate';
+        }
+        
+        function spinSlot(cost) {
+            if (userBalance < cost) {
+                alert('❌ Недостаточно GRAM!');
+                return;
+            }
+            userBalance -= cost;
+            const multiplier = 0.5 + Math.random() * 4.5;
+            const winAmount = Math.round(cost * multiplier);
+            userBalance += winAmount;
+            updateBalance();
+            if (multiplier >= 1) {
+                alert(🎉 Выигрыш: ${winAmount} GRAM!);
+            } else {
+                alert(😞 Проигрыш: ${cost - winAmount} GRAM);
+            }
+        }
+        
+        function deposit() {
+            window.open("https://t.me/UQCA_08-B7fSElLSQB0KZCYxTZlyMBZcIp8OBBTGiZEKOPLg", '_blank');
+        }
+        
+        function openDonate() {
+            window.open("https://t.me/UQCA_08-B7fSElLSQB0KZCYxTZlyMBZcIp8OBBTGiZEKOPLg", '_blank');
+        }
+        
+        updateBalance();
+    </script>
+</body>
+</html>
